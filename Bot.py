@@ -34,4 +34,18 @@ async def multi(ctx, numero1:int,numero2:int):
 async def resta(ctx, numero1:int,numero2:int):
     await ctx.send(f"El Resultado de la resta es: {numero1 - numero2}")
 
+@cool.command(name='bot')
+async def _bot(ctx):
+    """Is the bot cool?"""
+    await ctx.send('Yes, the bot is cool.')
+
+@bot.group()
+async def cool(ctx):
+    """Says if a user is cool.
+
+    In reality this just checks if a subcommand is being invoked.
+    """
+    if ctx.invoked_subcommand is None:
+        await ctx.send(f'No, {ctx.subcommand_passed} is not cool')
+
 bot.run("")
